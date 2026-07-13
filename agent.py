@@ -33,7 +33,9 @@ def create_model():
     return ChatOpenAI(
         base_url="https://openrouter.ai/api/v1",
         api_key=os.getenv('OPEN_ROUTE_API_KEY'),
-        model="openrouter/free"
+        model="openrouter/free",
+        max_retries=3,
+        timeout=10.0 
     )
 
 def build_agent(model,tools:list,system_prompt:str):
