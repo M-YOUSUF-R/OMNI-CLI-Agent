@@ -68,16 +68,40 @@ Follow this strict Tool Execution Protocol for every query:
    - Never truncate links.
 """
 
+from rich.panel import Panel
+from rich.text import Text
+
 def display_welcome_banner():
-    """Displays a stylized banner and available commands."""
-    banner_text = Text("⚡ AI RESEARCH AGENT CLI ⚡\n", style="bold cyan center")
-    banner_text.append("Ready to review papers, search the web, and analyze documents.\n\n", style="italic white")
-    banner_text.append("Commands:\n", style="bold yellow")
-    banner_text.append("  /upload  • Load documents into the knowledge base\n", style="green")
-    banner_text.append("  /model   • Change LLM Model provider\n", style="blue")
-    banner_text.append("  /clear   • Clear the Console\n", style="yellow")
-    banner_text.append("  /exit    • Close the session\n", style="red")
-    console.print(Panel(banner_text, border_style="cyan", expand=False))
+    """Displays a highly polished, cyberpunk-styled welcome banner for OMNI."""
+    banner_text = Text()
+    
+    banner_text.append("🌌  O M N I   C L I  🌌\n", style="bold magenta")
+    banner_text.append("─── Desktop & Web Intelligence Agent ───\n\n", style="dim cyan")
+    
+    banner_text.append("Ready to assist you, search the web, manage files, and analyze documents.\n\n", style="italic white")
+    
+    banner_text.append("⚡ Core Commands:\n", style="bold yellow")
+    banner_text.append("  /upload  ", style="bold green")
+    banner_text.append("•  Load documents into the local knowledge base\n", style="white")
+    
+    banner_text.append("  /model   ", style="bold bright_blue")
+    banner_text.append("•  Dynamically switch the active LLM backend\n", style="white")
+    
+    banner_text.append("  /clear   ", style="bold bright_yellow")
+    banner_text.append("•  Clear the terminal workspace screen\n", style="white")
+    
+    banner_text.append("  /exit    ", style="bold red")
+    banner_text.append("•  Safely terminate the OMNI session\n", style="white")
+    
+    console.print(
+        Panel(
+            banner_text,
+            border_style="magenta",
+            title="[bold bright_white] SYSTEM READY [/bold bright_white]",
+            subtitle="[dim white] build v1.0.0 [/dim white]",
+            expand=False,
+        )
+    )
 
 # Default model configuration
 llm_model = createOpenRouteModel()
@@ -117,7 +141,7 @@ async def main():
             agent = build_agent(llm_model, TOOLS, SYSTEM_PROMPT)
             continue
 
-        console.print(f"\n[bold cyan]🤖 Agent[/bold cyan]")
+        console.print(f"\n[bold cyan]🤖 Omni[/bold cyan]")
         
         full_response = ""
         resolved_model = None
