@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 from langchain.agents import create_agent
 from langchain_core.tools import tool
 from langchain_openai import ChatOpenAI
+from langchain_ollama import ChatOllama
 from langgraph.checkpoint.memory import InMemorySaver
 
 load_dotenv()
@@ -29,13 +30,17 @@ def word_count(text: str) -> int:
     Returns the word count as an integer.
     """
     return len(text.split())
-def create_model():
+def createOpenRouteModel():
     return ChatOpenAI(
         base_url="https://openrouter.ai/api/v1",
         api_key=os.getenv('OPEN_ROUTE_API_KEY'),
         model="openrouter/free",
         max_retries=3,
         timeout=10.0 
+    )
+def createOllamaMode():
+    return ChatOllama(
+        model='llama3.1:latest',
     )
 
 def build_agent(model,tools:list,system_prompt:str):
