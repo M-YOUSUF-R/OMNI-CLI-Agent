@@ -68,8 +68,6 @@ Follow this strict Tool Execution Protocol for every query:
    - Never truncate links.
 """
 
-from rich.panel import Panel
-from rich.text import Text
 
 def display_welcome_banner():
     """Displays a highly polished, cyberpunk-styled welcome banner for OMNI."""
